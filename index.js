@@ -3,9 +3,7 @@ const httpProxy = require('http-proxy')
 const fs = require('fs')
 const os = require('os')
 
-const port = 443
-
-const {cert, key, cacert, port, routes} = fs.readFileSync('./config.js')
+const {cert, key, cacert, port, routes} = JSON.parse(fs.readFileSync('./config.json'))
 
 const httpsOptions = {
   key: fs.readFileSync(key),

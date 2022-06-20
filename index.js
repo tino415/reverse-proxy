@@ -1,9 +1,12 @@
+#!/usr/bin/env node
 const https = require('https')
 const httpProxy = require('http-proxy')
 const fs = require('fs')
 const os = require('os')
+const path = require('path')
+const config_path = path.join(process.env.HOME, '/.reverse-proxy.json');
 
-const {cert, key, cacert, port, routes} = JSON.parse(fs.readFileSync('./config.json'))
+const {cert, key, cacert, port, routes} = JSON.parse(fs.readFileSync(config_path))
 
 const httpsOptions = {
   key: fs.readFileSync(key),
